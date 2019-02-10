@@ -43,8 +43,6 @@ private ["_map"];
 
 _map = ObjNull;
 
-if ((isnil  "BaMilSim_adminlevel")) exitWith {};
-if ((call BaMilSim_adminlevel) < 1) exitWith {};
 
 
 // Configuration

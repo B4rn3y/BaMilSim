@@ -38,7 +38,9 @@ switch(playerside) do {
 
 		BaMilSim_adminlevel = compileFinal str _adminlvel;
 		BaMilSim_donatorlevel = compileFinal str _donorlevel;
-		BaMilSim_blacklist = _blacklist;
+		if(_blacklist isEqualTo 1) then {
+			BaMilSim_blacklist = _blacklist;
+		};
 
 		BaMilSim_alive = _alive;
 		BaMilSim_position = [_position] call BaMilSim_fnc_mToArray;

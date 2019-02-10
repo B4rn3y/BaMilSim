@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `adminlevel` enum('0','1','2','3','4','5') NOT NULL DEFAULT '0',
   `donatorlevel` enum('0','1','2','3','4','5') NOT NULL DEFAULT '0',
   `alive` tinyint(1) NOT NULL DEFAULT '1',
+  `blacklist` tinyint(1) NOT NULL DEFAULT '0',
   `position` varchar(64) NOT NULL DEFAULT '"[]"',
   `playtime` varchar(32) NOT NULL DEFAULT '0',
   `insert_time` timestamp DEFAULT CURRENT_TIMESTAMP,
