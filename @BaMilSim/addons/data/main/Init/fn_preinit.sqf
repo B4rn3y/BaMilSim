@@ -1,3 +1,4 @@
+diag_log "BaMilSim :: Starting";
 if (isServer) exitWith {};
 if(!isMultiplayer) exitWith {};
 //setViewDistance 15;

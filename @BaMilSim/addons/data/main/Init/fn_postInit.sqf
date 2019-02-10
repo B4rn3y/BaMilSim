@@ -1,6 +1,6 @@
-
+diag_log "BaMilSim :: Starting Functions";
 if (isServer) exitWith {};
-
+if!(isMultiplayer) exitWith {};
 if (!hasInterface) exitWith {};
 enableSaving [false, false];
 

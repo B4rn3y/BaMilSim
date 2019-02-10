@@ -45,7 +45,7 @@ switch(playerside) do {
 		BaMilSim_alive = _alive;
 		BaMilSim_position = [_position] call BaMilSim_fnc_mToArray;
 		if(typeName BaMilSim_position isEqualTo "STRING") then {BaMilSim_position = call compile[format["%1", BaMilSim_position],true];};
-		BaMilSim_playtime = call compile[_playtime,true];
+		BaMilSim_playtime = _playtime;
 
 
 

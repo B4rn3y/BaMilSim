@@ -132,9 +132,9 @@ if (isnil "mapm") then
 	_mapdraw = _map ctrlSetEventHandler ["Draw", "_this call drawic;"];
 
 	// _minimapdraw = _minimap ctrlSetEventHandler ["Draw", "_this call drawic;"];
-	if musekeys then
+	if (musekeys) then
 	{
-		F2_EH = (findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 0x3C) then {call moptions;};"];
+		//F2_EH = (findDisplay 46) displayAddEventHandler ["KeyDown","if ((_this select 1) == 0x3C) then {call moptions;};"];
 	};
 
 	sleep 0.1;
@@ -144,7 +144,7 @@ else
 	mapm = nil;
 
 	//_map ctrlremoveeventhandler ["Draw", _mapdraw];
-	(findDisplay 46) displayRemoveEventHandler ["KeyDown", F2_EH];
+	//(findDisplay 46) displayRemoveEventHandler ["KeyDown", F2_EH];
 
 	plist = [];
 	vlist = [];

@@ -13,7 +13,7 @@ class CfgFunctions
 			class animSync {};
 			class exp_hint {};
 			class take_seat {};
-			class postInit {postInit = 1;};
+			class postInit_mission {postInit = 1;};
 
 		};
 	};

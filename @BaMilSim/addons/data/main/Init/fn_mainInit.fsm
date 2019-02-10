@@ -44,7 +44,7 @@ item39[] = {"loading_Gear",2,250,-748.903625,-927.437622,-658.903625,-877.437561
 item40[] = {"position_known",4,218,-1326.025391,-940.332825,-1236.025269,-890.332825,0.000000,"position known"};
 item41[] = {"No_Position_know",4,218,-1218.846436,-1006.083801,-1128.846436,-956.083862,1.000000,"No Position" \n "known"};
 item42[] = {"END_2",1,250,-1220.651855,-1091.078613,-1130.651855,-1041.078369,0.000000,"END"};
-item43[] = {"set_player__to_p",2,250,-1456.196045,-937.151917,-1366.195801,-887.151855,0.000000,"set player" \n " to position"};
+item43[] = {"set_player__to_p",2,4346,-1456.196045,-937.151917,-1366.195801,-887.151855,0.000000,"set player" \n " to position"};
 item44[] = {"END_3",1,250,-1742.861938,-939.480774,-1652.861938,-889.480530,0.000000,"END"};
 item45[] = {"Setup_Login_Data_1",2,250,-207.653168,-1213.553467,-117.653168,-1163.553467,0.000000,"Setup" \n "Login" \n "Data"};
 item46[] = {"",7,210,191.237366,-909.436523,199.237366,-901.436523,0.000000,""};
@@ -52,7 +52,7 @@ item47[] = {"Blacklisted_or_Vars",4,218,-503.820923,-1023.126099,-413.820923,-97
 item48[] = {"Exit_Type_4",2,250,-377.905518,-1026.191162,-287.905518,-976.191528,0.000000,"Exit Type"};
 item49[] = {"true",4,218,-207.573914,-1306.259155,-117.573914,-1256.259155,0.000000,"true"};
 item50[] = {"setpos",2,250,-221.175781,-1748.270508,-131.175781,-1698.270508,0.000000,"setpos"};
-item51[] = {"END_4",1,4346,-218.672852,-1910.239868,-128.672791,-1860.239136,0.000000,"END"};
+item51[] = {"END_4",1,250,-218.672852,-1910.239868,-128.672791,-1860.239136,0.000000,"END"};
 item52[] = {"W8_a_bit",4,218,-220.971619,-1828.581055,-130.971619,-1778.581055,0.000000,"W8 a bit"};
 item53[] = {"gear_loaded",4,218,-880.963806,-930.504517,-790.963806,-880.504517,0.000000,"gear loaded"};
 item54[] = {"Load_some_Shit",2,250,-998.947998,-934.153503,-908.947937,-884.153503,0.000000,"Load some" \n "Shit"};
@@ -67,6 +67,8 @@ item62[] = {"__8",2,250,-216.512451,-618.898438,-126.512451,-568.898438,0.000000
 item63[] = {"Display",4,218,-214.010254,-536.324341,-124.010246,-486.324310,0.000000,"Display"};
 item64[] = {"functions_ready",4,218,-1118.659424,-934.166382,-1028.659424,-884.166382,0.000000,"functions" \n "ready"};
 item65[] = {"dummy",2,250,-1217.596313,-937.245056,-1127.596191,-887.245056,0.000000,"dummy"};
+item66[] = {"dead",4,218,-1112.788330,-1004.933716,-1022.788391,-954.933716,0.000000,"dead"};
+item67[] = {"END_5",1,250,-1059.658569,-1088.177856,-969.658569,-1038.177612,0.000000,"END"};
 link0[] = {0,16};
 link1[] = {0,19};
 link2[] = {0,34};
@@ -137,8 +139,10 @@ link66[] = {63,18};
 link67[] = {64,65};
 link68[] = {65,40};
 link69[] = {65,41};
-globals[] = {0.000000,0,0,0,0,640,480,1,176,6316128,1,-1288.201050,239.339722,-956.708618,-2022.490356,1267,884,1};
-window[] = {2,-1,-1,-32000,-32000,811,52,1492,52,3,1285};
+link70[] = {65,66};
+link71[] = {66,67};
+globals[] = {0.000000,0,0,0,0,640,480,1,178,6316128,1,-1865.502563,-863.283447,-491.151184,-1342.531006,691,587,1};
+window[] = {0,-1,-1,-1,-1,785,26,1466,26,1,709};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -218,7 +222,7 @@ class FSM
                         init = /*%FSM<STATEINIT""">*/"diag_log ""BaMilSim :: Server Version got broadcasted!"";" \n
                          "diag_log ""BaMilSim :: Loading Variables"";" \n
                          "" \n
-                         "[] call valor_fnc_variables;"/*%FSM</STATEINIT""">*/;
+                         "[] call BaMilSim_fnc_variables;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -229,7 +233,7 @@ class FSM
                                         priority = 1.000000;
                                         to="__1";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"Valor_version_info isequalto Valor_Server_Version_info"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BaMilSim_version_info isequalto BaMilSim_Server_Version_info"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -240,7 +244,7 @@ class FSM
                                         priority = 0.000000;
                                         to="Exit_Type";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!(Valor_version_info isequalto Valor_Server_Version_info)"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(BaMilSim_version_info isequalto BaMilSim_Server_Version_info)"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -300,7 +304,7 @@ class FSM
                                         priority = 1.000000;
                                         to="__3";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"Valor_Server_loaded"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BaMilSim_Server_loaded"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -347,7 +351,7 @@ class FSM
                 {
                         name = "__1";
                         itemno = 13;
-                        init = /*%FSM<STATEINIT""">*/"diag_log ""BaMilSim :: Valor Version is OK"";"/*%FSM</STATEINIT""">*/;
+                        init = /*%FSM<STATEINIT""">*/"diag_log ""BaMilSim :: BaMilSim Version is OK"";"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -493,7 +497,7 @@ class FSM
                                         priority = 1.000000;
                                         to="Exit_Type_2";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"isnil ""Valor_Server_Version_info"""/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isnil ""BaMilSim_Server_Version_info"""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -504,7 +508,7 @@ class FSM
                                         priority = 0.000000;
                                         to="load_Variables";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!isnil ""Valor_Server_Version_info"""/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BaMilSim_Server_Version_info"""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -552,7 +556,7 @@ class FSM
                                         priority = 0.000000;
                                         to="_";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!(isnil ""Valor_Server_loaded"")"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(isnil ""BaMilSim_Server_loaded"")"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -599,7 +603,7 @@ class FSM
                                         priority = 0.000000;
                                         to="_";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!(isnil ""Valor_Server_loaded"")"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(isnil ""BaMilSim_Server_loaded"")"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -663,9 +667,7 @@ class FSM
                         itemno = 42;
                         init = /*%FSM<STATEINIT""">*/"diag_log ""BaMilSim :: No position Known for player, openeing spawn menu"";" \n
                          "" \n
-                         "//[] spawn valor_fnc_openSpawnMenu;" \n
                          "" \n
-                         "player setdamage 1;" \n
                          "" \n
                          "[true] call BaMilSim_fnc_closeLoadingScreen;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -897,6 +899,7 @@ class FSM
                         name = "__7";
                         itemno = 60;
                         init = /*%FSM<STATEINIT""">*/"diag_log ""BaMilSim :: Waiting for player"";" \n
+                         "" \n
                          ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -955,7 +958,18 @@ class FSM
                                         priority = 1.000000;
                                         to="END_2";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"BaMilSim_position isequalto [] || BaMilSim_alive isequalto 0"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BaMilSim_position isequalto []"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "dead">*/
+                                class dead
+                                {
+                                        itemno = 66;
+                                        priority = 0.000000;
+                                        to="END_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BaMilSim_alive isequalto 0"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -973,6 +987,24 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
+                /*%FSM<STATE "END_5">*/
+                class END_5
+                {
+                        name = "END_5";
+                        itemno = 67;
+                        init = /*%FSM<STATEINIT""">*/"diag_log ""BaMilSim :: No position Known for player, openeing spawn menu"";" \n
+                         "//[] spawn valor_fnc_openSpawnMenu;" \n
+                         "" \n
+                         "player setdamage 1;" \n
+                         "" \n
+                         "" \n
+                         "[true] call BaMilSim_fnc_closeLoadingScreen;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
         };
         initState="init";
         finalStates[] =
@@ -982,6 +1014,7 @@ class FSM
                 "END_2",
                 "END_3",
                 "END_4",
+                "END_5",
         };
 };
 /*%FSM</COMPILE>*/

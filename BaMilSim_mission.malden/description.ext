@@ -1,4 +1,9 @@
-
+class Header
+{
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 195;
+};
 
 
 

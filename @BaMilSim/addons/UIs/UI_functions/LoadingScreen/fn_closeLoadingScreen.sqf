@@ -5,5 +5,5 @@ disableSerialization;
 
 if(_yesOrNo) then {
 
-	Valor_Init_done = true;
+	BaMilSim_Init_done = true;
 };

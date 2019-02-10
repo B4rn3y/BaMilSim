@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `alive` tinyint(1) NOT NULL DEFAULT '1',
   `blacklist` tinyint(1) NOT NULL DEFAULT '0',
   `position` varchar(64) NOT NULL DEFAULT '"[]"',
-  `playtime` varchar(32) NOT NULL DEFAULT '0',
+  `playtime` int(100) NOT NULL DEFAULT '0',
   `insert_time` timestamp DEFAULT CURRENT_TIMESTAMP,
   `last_seen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`uid`),
