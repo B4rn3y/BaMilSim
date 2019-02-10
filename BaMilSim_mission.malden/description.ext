@@ -1,0 +1,25 @@
+
+
+
+
+
+
+author = "Barney";
+
+
+// ----RESPAWN SETTINGS----
+respawn = "Base";
+
+
+disabledAI = 1;
+joinUnassigned = 0;
+enableDebugConsole = 2;
+
+
+
+
+#include "BaMilSim_Config.hpp"
+
+
+#include "CfgCustomFunctions.hpp"
+

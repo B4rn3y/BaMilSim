@@ -1,0 +1,193 @@
+/*%FSM<COMPILE "D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, fn_vehicle_monitoring">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-199.273346,-1187.348511,-109.273354,-1137.348755,0.000000,"init"};
+item1[] = {"true",4,218,-203.559189,-945.591431,-113.559196,-895.591370,1.000000,"true"};
+item2[] = {"check_",4,218,-48.097900,-853.246643,41.902107,-803.246643,0.000000,"check?"};
+item3[] = {"save_Vehicle",2,250,-48.036621,-730.083496,41.963371,-680.083496,0.000000,"save Vehicle"};
+item4[] = {"set_waittime",2,4346,-204.712814,-850.161377,-114.712799,-800.161438,0.000000,"set waittime"};
+item5[] = {"true",4,218,-213.440247,-737.718872,-123.440247,-687.718872,0.000000,"true"};
+item6[] = {"array_check",4,218,-208.172592,-1112.007813,-118.172592,-1062.007813,0.000000,"array check"};
+item7[] = {"init_saving",2,250,-204.006622,-1024.849976,-114.006607,-974.849243,0.000000,"init saving"};
+item8[] = {"array_gone___",4,218,-377.842285,-1189.458130,-287.842285,-1139.458130,0.000000,"array gone :("};
+item9[] = {"END",1,250,-567.997498,-1199.777344,-477.997498,-1149.777344,0.000000,"END"};
+link0[] = {0,6};
+link1[] = {0,8};
+link2[] = {1,4};
+link3[] = {2,3};
+link4[] = {3,5};
+link5[] = {4,2};
+link6[] = {5,4};
+link7[] = {6,7};
+link8[] = {7,1};
+link9[] = {8,9};
+globals[] = {0.000000,0,0,0,0,640,480,1,200,6316128,1,-703.415222,92.387390,-365.376221,-1331.708008,728,884,1};
+window[] = {2,-1,-1,-1,-1,889,130,1570,130,3,746};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "fn_vehicle_monitoring";
+        class States
+        {
+                /*%FSM<STATE "init">*/
+                class init
+                {
+                        name = "init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"diag_log ""BaMilSim Server :: Starting Persisten Vehicle monitoring"";" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "array_gone___">*/
+                                class array_gone___
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isnil ""Valor_vehicles_monitoring"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "array_check">*/
+                                class array_check
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="init_saving";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BaMilSim_vehicles_monitoring"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "save_Vehicle">*/
+                class save_Vehicle
+                {
+                        name = "save_Vehicle";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"_delete = [];" \n
+                         "{" \n
+                         "	if(isnull (_x select 0)) then {" \n
+                         "		[(_x select 1)] call BaMilSim_fnc_vehicleDelete;" \n
+                         "		_delete pushback _foreachindex;" \n
+                         "	} else {" \n
+                         "		_last_pos = (_x select 0) getvariable[""last_pos"",[0,0,0]];" \n
+                         "		if(!(_last_pos isequalto (getposatl (_x select 0))) || (_x select 0) getvariable[""Update_this"",false]) then {" \n
+                         "			[(_x select 0)] call valor_fnc_saveVehicleComplete;" \n
+                         "			if((_x select 0) getvariable[""update_this"",false]) then {" \n
+                         "	         (_x select 0) setvariable[""update_this"",nil,true];" \n
+                         "         };" \n
+                         "" \n
+                         "			(_x select 0) setvariable [""last_pos"",(getposatl (_x select 0))];" \n
+                         "		};" \n
+                         "" \n
+                         "	};" \n
+                         "} foreach BaMilSim_vehicles_monitoring;" \n
+                         "" \n
+                         "{" \n
+                         "	BaMilSim_vehicles_monitoring deleteat _x;" \n
+                         "} foreach _delete;" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="set_waittime";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_waittime">*/
+                class set_waittime
+                {
+                        name = "set_waittime";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "_wait = diag_ticktime + random[60,70,90];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "check_">*/
+                                class check_
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="save_Vehicle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_wait < diag_ticktime"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "init_saving">*/
+                class init_saving
+                {
+                        name = "init_saving";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "{" \n
+                         "	(_x select 0) setvariable[""last_pos"",(getposatl (_x select 0))];" \n
+                         "" \n
+                         "} foreach BaMilSim_vehicles_monitoring;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="set_waittime";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END">*/
+                class END
+                {
+                        name = "END";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "diag_log ""BaMilSim :: _vehicle is null, exiting"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="init";
+        finalStates[] =
+        {
+                "END",
+        };
+};
+/*%FSM</COMPILE>*/

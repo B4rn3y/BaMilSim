@@ -1,0 +1,153 @@
+/*%FSM<COMPILE "D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, fn_time_module">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-375.990051,-1008.315308,-285.990021,-958.314636,0.000000,"init"};
+item1[] = {"start_the_flood",4,218,-385.603149,-775.339233,-295.603149,-725.339233,0.000000,"start the" \n "flood" \n "period"};
+item2[] = {"set_time_mult_for",2,250,-385.603149,-857.052979,-295.603149,-807.052917,0.000000,"set time mult" \n "for morning"};
+item3[] = {"true",4,218,-382.125977,-933.551392,-292.125977,-883.551392,0.000000,"true"};
+item4[] = {"faster_time_for",2,250,-382.534851,-663.943237,-292.534851,-613.943237,0.000000,"faster time" \n "for flood"};
+item5[] = {"end_flood_period",4,218,-382.492065,-566.769287,-292.492065,-516.769287,0.000000,"end flood" \n "period"};
+item6[] = {"slower_till_suns",2,250,-262.503906,-563.644531,-172.503830,-513.644592,0.000000,"slower till" \n "sunset"};
+item7[] = {"sunset_",4,218,-144.733185,-565.318726,-54.733185,-515.318726,0.000000,"sunset?"};
+item8[] = {"night_ca_2h",2,250,-143.509171,-711.252014,-53.509186,-661.252014,0.000000,"night ca 2h"};
+item9[] = {"sunrise_",4,4314,-146.650208,-848.851440,-56.650208,-798.851440,0.000000,"sunrise?"};
+link0[] = {0,3};
+link1[] = {1,4};
+link2[] = {2,1};
+link3[] = {3,2};
+link4[] = {4,5};
+link5[] = {5,6};
+link6[] = {6,7};
+link7[] = {7,8};
+link8[] = {8,9};
+link9[] = {9,2};
+globals[] = {0.000000,0,0,0,0,640,480,1,215,6316128,1,-522.228516,86.781799,-449.415283,-968.267334,689,587,1};
+window[] = {0,-1,-1,-1,-1,811,52,1492,52,1,707};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "fn_time_module";
+        class States
+        {
+                /*%FSM<STATE "init">*/
+                class init
+                {
+                        name = "init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"setdate[2018,6,1,6,30];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="set_time_mult_for";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_time_mult_for">*/
+                class set_time_mult_for
+                {
+                        name = "set_time_mult_for";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"settimemultiplier 4.1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "start_the_flood">*/
+                                class start_the_flood
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="faster_time_for";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(date select 3) isequalto 8 && (date select 4) >= 30"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "faster_time_for">*/
+                class faster_time_for
+                {
+                        name = "faster_time_for";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"settimemultiplier 13;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "end_flood_period">*/
+                                class end_flood_period
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="slower_till_suns";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(date select 3) isequalto 15"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "slower_till_suns">*/
+                class slower_till_suns
+                {
+                        name = "slower_till_suns";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"settimemultiplier 7;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "sunset_">*/
+                                class sunset_
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="night_ca_2h";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(date select 3) isequalto 19 && (date select 4) >= 30"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "night_ca_2h">*/
+                class night_ca_2h
+                {
+                        name = "night_ca_2h";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"settimemultiplier 4.25;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "sunrise_">*/
+                                class sunrise_
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="set_time_mult_for";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(date select 3) isequalto 6 && (date select 4) >= 30"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="init";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,195 @@
+/*%FSM<COMPILE "D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, fn_fog">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-375.990051,-1008.315308,-285.990021,-958.314636,0.000000,"init"};
+item1[] = {"exit_",4,218,-490.771149,-849.971130,-400.771057,-799.971130,1.000000,"exit?"};
+item2[] = {"make_fog",2,250,-382.125977,-847.490723,-292.125977,-797.490662,0.000000,"make fog"};
+item3[] = {"END",1,250,-850.119629,-859.705566,-760.119385,-809.705566,0.000000,"END"};
+item4[] = {"true",4,218,-382.125977,-933.551392,-292.125977,-883.551392,0.000000,"true"};
+item5[] = {"w8_",4,218,-249.123718,-856.183716,-159.123718,-806.183716,0.000000,"w8" \n ""};
+item6[] = {"del_fog",2,250,-252.600891,-770.123413,-162.600861,-720.123413,0.000000,"del fog"};
+item7[] = {"true",4,218,-380.387482,-770.123413,-290.387482,-720.123474,0.000000,"true"};
+item8[] = {"_",2,4346,-592.092468,-851.780457,-502.092468,-801.780457,0.000000,""};
+item9[] = {"w8",4,218,-714.386353,-858.133423,-624.386353,-808.133484,0.000000,"w8"};
+link0[] = {0,4};
+link1[] = {1,8};
+link2[] = {2,1};
+link3[] = {2,5};
+link4[] = {4,2};
+link5[] = {5,6};
+link6[] = {6,7};
+link7[] = {7,2};
+link8[] = {8,9};
+link9[] = {9,3};
+globals[] = {0.000000,0,0,0,0,640,480,1,211,6316128,1,-894.471680,-130.799561,-614.256836,-1111.787842,901,587,1};
+window[] = {0,-1,-1,-32000,-32000,863,122,1562,104,1,919};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "fn_fog";
+        class States
+        {
+                /*%FSM<STATE "init">*/
+                class init
+                {
+                        name = "init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"diag_log ""Valor :: Starting Fog"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="make_fog";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "make_fog">*/
+                class make_fog
+                {
+                        name = "make_fog";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/" private [""_obj"",""_pos"",""_fog1"",""_fog2"",""_fog3"",""_inVehicle""];" \n
+                         "        _obj = vehicle player;" \n
+                         "" \n
+                         "        _pos = [position _obj select 0,position _obj select 1,0];" \n
+                         "" \n
+                         "        _fog1 = ""#particlesource"" createVehicleLocal _pos;" \n
+                         "        _fog1 setParticleParams [" \n
+                         "        [""\A3\Data_F\ParticleEffects\Universal\universal.p3d"" , 16, 12, 13, 0], """", ""Billboard"", 1, 10," \n
+                         "            [0, 0, -6], [0, 0, 0], 1, 1.275, 1, 0," \n
+                         "            [7,6], [[1, 1, 1, 0], [1, 1, 1, 0.04], [1, 1, 1, 0]], [1000], 1, 0, """", """", _obj" \n
+                         "        ];" \n
+                         "        _fog1 setParticleRandom [3, [55, 55, 0.2], [0, 0, -0.1], 2, 0.45, [0, 0, 0, 0.1], 0, 0];" \n
+                         "        _fog1 setParticleCircle [0.001, [0, 0, -0.12]];" \n
+                         "        _fog1 setDropInterval 0.01;" \n
+                         "" \n
+                         "        _fog2 = ""#particlesource"" createVehicleLocal _pos;" \n
+                         "        _fog2 setParticleParams [" \n
+                         "        [""\A3\Data_F\ParticleEffects\Universal\universal.p3d"" , 16, 12, 13, 0], """", ""Billboard"", 1, 10," \n
+                         "            [0, 0, -6], [0, 0, 0], 1, 1.275, 1, 0," \n
+                         "            [7,6], [[1, 1, 1, 0], [1, 1, 1, 0.04], [1, 1, 1, 0]], [1000], 1, 0, """", """", _obj" \n
+                         "        ];" \n
+                         "        _fog2 setParticleRandom [3, [55, 55, 0.2], [0, 0, -0.1], 2, 0.45, [0, 0, 0, 0.1], 0, 0];" \n
+                         "        _fog2 setParticleCircle [0.001, [0, 0, -0.12]];" \n
+                         "        _fog2 setDropInterval 0.01;" \n
+                         "" \n
+                         "        _fog3 = ""#particlesource"" createVehicleLocal _pos;" \n
+                         "        _fog3 setParticleParams [" \n
+                         "        [""\A3\Data_F\ParticleEffects\Universal\universal.p3d"" , 16, 12, 13, 0], """", ""Billboard"", 1, 10," \n
+                         "            [0, 0, -6], [0, 0, 0], 1, 1.275, 1, 0," \n
+                         "            [7,6], [[1, 1, 1, 0], [1, 1, 1, 0.04], [1, 1, 1, 0]], [1000], 1, 0, """", """", _obj" \n
+                         "        ];" \n
+                         "        _fog3 setParticleRandom [3, [55, 55, 0.2], [0, 0, -0.1], 2, 0.45, [0, 0, 0, 0.1], 0, 0];" \n
+                         "        _fog3 setParticleCircle [0.001, [0, 0, -0.12]];" \n
+                         "        _fog3 setDropInterval 0.01;" \n
+                         "" \n
+                         "        player setVariable [""playerfog"", floor time + 5];" \n
+                         "_time = diag_ticktime + 120;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "exit_">*/
+                                class exit_
+                                {
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isnil ""valor_fog"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "w8_">*/
+                                class w8_
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="del_fog";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_ticktime > _time"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END">*/
+                class END
+                {
+                        name = "END";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"deleteVehicle _fog1;" \n
+                         "deleteVehicle _fog2;" \n
+                         "deleteVehicle _fog3;" \n
+                         "diag_log ""Valor :: Ending Fog"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "del_fog">*/
+                class del_fog
+                {
+                        name = "del_fog";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"deleteVehicle _fog1;" \n
+                         "deleteVehicle _fog2;" \n
+                         "deleteVehicle _fog3;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="make_fog";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"_time = diag_ticktime + 15;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "w8">*/
+                                class w8
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_ticktime > _time"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="init";
+        finalStates[] =
+        {
+                "END",
+        };
+};
+/*%FSM</COMPILE>*/

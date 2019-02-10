@@ -1,0 +1,40 @@
+/* #Lygiba
+$[
+	1.063,
+	["Source",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
+	[1100,"",[1,"",["0.00108123 * safezoneW + safezoneX","-5.99921e-005 * safezoneH + safezoneY","1.00031 * safezoneW","1.001 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+]
+*/
+
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT START (by Barney, v1.063, #Lygiba)
+////////////////////////////////////////////////////////
+
+class RscStructuredText_1100: RscStructuredText
+{
+	idc = 1100;
+	x = 0.00108123 * safezoneW + safezoneX;
+	y = -5.99921e-005 * safezoneH + safezoneY;
+	w = 1.00031 * safezoneW;
+	h = 1.001 * safezoneH;
+};
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT END
+////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT START (by Barney, v1.063, #Wivubo)
+////////////////////////////////////////////////////////
+
+class RscStructuredText_1100: RscStructuredText
+{
+	idc = 1100;
+	x = -0.00520938 * safezoneW + safezoneX;
+	y = -0.00379999 * safezoneH + safezoneY;
+	w = 1.00635 * safezoneW;
+	h = 1.00593 * safezoneH;
+};
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT END
+////////////////////////////////////////////////////////
