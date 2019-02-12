@@ -4,16 +4,9 @@ _vehicle_send = param[0,objNull,[objNull]];
 _requester = param[1,objNull,[objnull]];
 _type = "error";
 iF(isnull _vehicle_send || isnull _requester) exitWith {};
-_vehicle = objNull;
+_vehicle = _vehicle_send;
 _classname = typeof _vehicle_send;
-_pos = [getposatl _vehicle_send,getdir _vehicle_send,vectorUp _vehicle_send];
-deleteVehicle _vehicle_send;
-sleep 1;
-_vehicle = _classname createVehicle [0,0,10];
-waitUntil {!isnull _vehicle};
-_vehicle setdir (_pos select 1);
-_vehicle setposatl (_pos select 0);
-_vehicle setVectorUp (_pos select 2);
+_pos = [getposatl _vehicle,getdir _vehicle,vectorUp _vehicle];
 
 
 _vehicle allowDamage true;
@@ -52,7 +45,7 @@ _type = switch (true) do
 
 _damage = getAllHitPointsDamage _vehicle select 2;
 _damage = [_damage] call BaMilSim_fnc_mresarray;
-_fuel = 0;
+_fuel = 1;
 [_vehicle] call BaMilSim_fnc_clear_vehicle;
 _inventory = [_vehicle] call BaMilSim_fnc_getvehiclecargo;
 _vehicle setfuel _fuel;
@@ -72,7 +65,7 @@ _vehicle setvariable["last_pos",(getposatl _vehicle)];
 BaMilSim_vehicles_monitoring pushBackUnique [_vehicle,(_queryresult select 0)];
 
 
-[_vehicle,
+/*[_vehicle,
 	["<t color='#FF6347'>Already Inserted</t>",
 	{},
 	[],
@@ -83,7 +76,7 @@ BaMilSim_vehicles_monitoring pushBackUnique [_vehicle,(_queryresult select 0)];
 	"((_target distance player) <= 9)",
 	20
 	]
-] remoteExec ["addaction", -2];
+] remoteExec ["addaction", -2];*/
 
 format["Vehicle: %1 @ Pos %2 got inserted into the Database with ID %3. Vehicle number %4 from type %5 being monitored now.",(typeof _vehicle),_pos,(_queryresult select 0),(count BaMilSim_vehicles_monitoring),_type] remoteExec ["systemchat", _requester];
 

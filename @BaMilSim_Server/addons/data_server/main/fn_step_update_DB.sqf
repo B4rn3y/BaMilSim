@@ -18,7 +18,7 @@ switch (_mode) do
 	};
 	case 1:
 	{
-		_stats = param[3,"""[100,100,12000]""",["",[]]];
+		_stats = param[3,"""[0]""",["",[]]];
 		_query = format["Update players set stats = '%1' where pid = '%2'",_stats,_uid];
 
 
@@ -34,7 +34,7 @@ switch (_mode) do
 
 	case 3:
 	{
-		_pos = param[3,"""[]""",[1,"",[]]];
+		_pos = param[3,[],[1,"",[]]];
 		_query = format["Update players set position = '%1' where pid = '%2'",_pos,_uid];
 
 

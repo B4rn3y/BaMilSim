@@ -1,6 +1,6 @@
 private ["_array","_primWeapon","_secWeapon","_handgun","_foreachindex","_X"];
 _array = param[0,[],[[]]];
-if(_array isEqualTo []) exitWith {};
+if(_array isEqualTo []) exitWith {BaMilSim_gear_loaded = true;};
 0 call BaMilSim_fnc_clearPlayerInventory;
 _primWeapon = "";
 _secWeapon = "";
@@ -180,7 +180,7 @@ _handgun = "";
 
 0 spawn {
 	BaMilSim_gear_loaded = true;
-	sleep 3;
+	sleep 10;
 	BaMilSim_gear_loaded = nil;
 };
 

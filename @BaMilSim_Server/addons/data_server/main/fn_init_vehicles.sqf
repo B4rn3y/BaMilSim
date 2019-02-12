@@ -14,7 +14,7 @@ _vehicle = objNull;
 	//diag_log str _x;
 	//diag_log typename _x;
 	_id = _x select 0;
-	//{diag_log format["%1/%2",typename _x,_x];} foreach _x;
+	{diag_log format["%1/%2",typename _x,_x];} foreach _x;
 	_pos = (call compile (_x select 1)) select 0;
 	_dir =  (call compile (_x select 1)) select 1;
 	_vector = (call compile (_x select 1)) select 2;
@@ -25,8 +25,7 @@ _vehicle = objNull;
 	_inventory = _x select 6;
 	_fuel = _x select 7;
 	_damage = _x select 8;
-	_shop = _x select 9;
-	_classname = call compile [_classname,true];
+	_classname = call compile _classname;
 
 
 		//[_classname,_pos,_dir,_fuel,_damage,_inventory,_alive,_id,(_spawnpos select 0),(_spawnpos select 1),_spawndamage] spawn valor_fnc_persistent_vehicle_monitoring;
@@ -38,29 +37,38 @@ _vehicle = objNull;
 		} else {
 			waitUntil {!((nearestobjects[_pos,[_classname],100]) isEqualTo [])};
 		};*/
+		diag_log "BaMilSim :: Creating Vehicle";
 		_vehicle = createVehicle[_classname,[0,0,0],[],0,"CAN_COLLIDE"];
 		waitUntil {!isnull _vehicle};
+		diag_log "BaMilSim :: Vehicle created";
 		_vehicle allowDamage false;
 		if(_alive isequalto 0) then {
+			diag_log "BaMilSim :: Alive = 0";
 			_vehicle setfuel 0;
 			_vehicle setdir (_spawnpos select 1);
 			_vehicle setposatl (_spawnpos select 0);
 			_vehicle setVectorUp (_spawnpos select 2);
+			diag_log "BaMilSim :: Clearing Vehicle Gear";
 			[_vehicle] call BaMilSim_fnc_clear_vehicle;
+			diag_log "BaMilSim :: Setting Spawndamage";
 			[_vehicle,_spawndamage] spawn BaMilSim_fnc_setvehicleDamage;
+			diag_log "BaMilSim :: Start saving Vehicle";
 			[_vehicle,random [30,150,360]] spawn {sleep (_this select 1);[_this select 0] call BaMilSim_fnc_saveVehicleComplete;};
 		} else {
 			_vehicle setfuel _fuel;
 			_vehicle setdir _dir;
 			_vehicle setposatl _pos;
 			_vehicle setVectorUp _vector;
-
+			diag_log "BaMilSim :: Loading Gear";
 			[_vehicle,_inventory] call BaMilSim_fnc_loadVehicleCargo;
+			diag_log "BaMilSim :: Setting Vehicle Damage";
 			[_vehicle,_damage] spawn BaMilSim_fnc_setvehicleDamage;
 		};
+		diag_log "BaMilSim :: Setting DB Variable";
 		_vehicle setvariable ["DBID",_id,true];
 		_vehicle disableTIEquipment true;
 		_vehicle disableNVGEquipment true;
+		diag_log "BaMilSim :: Pushbacking Vehicle into Array";
 		BaMilSim_vehicles_monitoring pushBackUnique [_vehicle,_id];
 
 
@@ -77,13 +85,13 @@ _vehicle = objNull;
 
 
 		diag_log str [_classname,_pos,_dir,_fuel,_damage,_inventory,_alive,_id,(_spawnpos select 0),(_spawnpos select 1),_spawndamage];
-
+		diag_log "BaMilSim :: Flagging Vehicle alive in DB";
 		_query = format["UPDATE persistent_vehicles SET alive='1' WHERE id = '%1'",_id];
-
+		diag_log "BaMilSim :: Syncing this query";
 		[_query,1] call BaMilSim_fnc_db_sync;
 } foreach _res;
 
-
+diag_log "BaMilSim :: All Vehicles created";
 [] spawn BaMilSim_fnc_persistent_vehicle_monitoring;
 
 

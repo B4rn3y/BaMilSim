@@ -11,6 +11,16 @@ switch (_code) do
 	{
 	};
 };
+
+if(_code in (actionKeys "User10")) exitWith {
+	//Interaction key (default is Left Windows, can be mapped via Controls -> Custom -> User Action 10)
+	if!(isnil "EVH_ID_Vehicles") then {
+		removeMissionEventHandler ["Draw3D", EVH_ID_Vehicles];
+		EVH_ID_Vehicles = nil;
+	};
+	true;
+};
+
 switch (true) do
 {
 	case (_code in (actionKeys "compass")):

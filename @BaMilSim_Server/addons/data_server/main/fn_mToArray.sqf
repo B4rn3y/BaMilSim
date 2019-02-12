@@ -14,5 +14,5 @@ for "_i" from 0 to (count _array)-1 do
 };
 
 _array = toString(_array);
-_array = call compile[format["%1", _array],true];
+_array = call compile format["%1", _array];
 _array;

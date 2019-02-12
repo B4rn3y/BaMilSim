@@ -5,12 +5,12 @@ item0[] = {"init",0,250,-199.273346,-1187.348511,-109.273354,-1137.348755,0.0000
 item1[] = {"true",4,218,-203.559189,-945.591431,-113.559196,-895.591370,1.000000,"true"};
 item2[] = {"check_",4,218,-48.097900,-853.246643,41.902107,-803.246643,0.000000,"check?"};
 item3[] = {"save_Vehicle",2,250,-48.036621,-730.083496,41.963371,-680.083496,0.000000,"save Vehicle"};
-item4[] = {"set_waittime",2,4346,-204.712814,-850.161377,-114.712799,-800.161438,0.000000,"set waittime"};
+item4[] = {"set_waittime",2,250,-204.712814,-850.161377,-114.712799,-800.161438,0.000000,"set waittime"};
 item5[] = {"true",4,218,-213.440247,-737.718872,-123.440247,-687.718872,0.000000,"true"};
 item6[] = {"array_check",4,218,-208.172592,-1112.007813,-118.172592,-1062.007813,0.000000,"array check"};
 item7[] = {"init_saving",2,250,-204.006622,-1024.849976,-114.006607,-974.849243,0.000000,"init saving"};
 item8[] = {"array_gone___",4,218,-377.842285,-1189.458130,-287.842285,-1139.458130,0.000000,"array gone :("};
-item9[] = {"END",1,250,-567.997498,-1199.777344,-477.997498,-1149.777344,0.000000,"END"};
+item9[] = {"END",1,4346,-567.997498,-1199.777344,-477.997498,-1149.777344,0.000000,"END"};
 link0[] = {0,6};
 link1[] = {0,8};
 link2[] = {1,4};
@@ -22,7 +22,7 @@ link7[] = {6,7};
 link8[] = {7,1};
 link9[] = {8,9};
 globals[] = {0.000000,0,0,0,0,640,480,1,200,6316128,1,-703.415222,92.387390,-365.376221,-1331.708008,728,884,1};
-window[] = {2,-1,-1,-1,-1,889,130,1570,130,3,746};
+window[] = {2,-1,-1,-1,-1,915,156,1596,156,3,746};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -48,7 +48,7 @@ class FSM
                                         priority = 0.000000;
                                         to="END";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"isnil ""Valor_vehicles_monitoring"""/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isnil ""BaMilSim_vehicles_monitoring"""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -79,7 +79,7 @@ class FSM
                          "	} else {" \n
                          "		_last_pos = (_x select 0) getvariable[""last_pos"",[0,0,0]];" \n
                          "		if(!(_last_pos isequalto (getposatl (_x select 0))) || (_x select 0) getvariable[""Update_this"",false]) then {" \n
-                         "			[(_x select 0)] call valor_fnc_saveVehicleComplete;" \n
+                         "			[(_x select 0)] call BaMilSim_fnc_saveVehicleComplete;" \n
                          "			if((_x select 0) getvariable[""update_this"",false]) then {" \n
                          "	         (_x select 0) setvariable[""update_this"",nil,true];" \n
                          "         };" \n

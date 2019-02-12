@@ -1,4 +1,5 @@
 
+private ["_foreachindex","_BaMilSim_uid","_gear","_stats","_adminlvel","_donorlevel","_alive","_position","_playtime","_blacklist"];
 
 
 {
@@ -29,7 +30,7 @@ switch(playerside) do {
 		_blacklist = param[8,0,[1337,""]];
 
 
-
+		BaMilSim_alive = _alive;
 		BaMilSim_UID = _BaMilSim_uid;
 		BaMilSim_stats = ([_stats] call BaMilSim_fnC_mtoArray);
 		if(typeName BaMilSim_stats isEqualTo "STRING") then {BaMilSim_stats = call compile[format["%1", BaMilSim_stats],true];};
@@ -42,7 +43,6 @@ switch(playerside) do {
 			BaMilSim_blacklist = _blacklist;
 		};
 
-		BaMilSim_alive = _alive;
 		BaMilSim_position = [_position] call BaMilSim_fnc_mToArray;
 		if(typeName BaMilSim_position isEqualTo "STRING") then {BaMilSim_position = call compile[format["%1", BaMilSim_position],true];};
 		BaMilSim_playtime = _playtime;

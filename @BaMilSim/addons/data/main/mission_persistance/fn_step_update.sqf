@@ -15,7 +15,7 @@ switch (_mode) do
 	};
 	case 1:
 	{
-		_set pushback ([[damage player]] call BaMilSim_fnc_mresarray);
+		_set pushback [damage player];
 	};
 	case 2:
 	{
@@ -23,7 +23,7 @@ switch (_mode) do
 	};
 	case 3:
 	{
-		_set pushback ([[getposatl player,getdir player]] call BaMilSim_fnc_mresarray);
+		_set pushback [getposatl player,getdir player];
 	};
 	case 4:
 	{

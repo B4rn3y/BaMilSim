@@ -85,6 +85,12 @@ class CfgFunctions
 			class stackOnEachFrame {};
 		};
 
+		class vehicles
+		{
+			file = "\data\main\vehicles";
+			class showVehicleDBStatus {};
+		};
+
 		class others
 		{
 			file = "\data\main\others";
