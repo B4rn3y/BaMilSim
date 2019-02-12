@@ -10,14 +10,23 @@ _res = [_query,2,true] call BaMilSim_fnc_db_sync;
 diag_log str _res;
 diag_log typename _res;
 _vehicle = objNull;
+_pos = [];
+_dir = 0;
+_vector = [];
 {
 	//diag_log str _x;
 	//diag_log typename _x;
 	_id = _x select 0;
 	{diag_log format["%1/%2",typename _x,_x];} foreach _x;
-	_pos = (call compile (_x select 1)) select 0;
-	_dir =  (call compile (_x select 1)) select 1;
-	_vector = (call compile (_x select 1)) select 2;
+	if(typename (_X select 1) isEqualTo "STRING") then {
+		_pos = (call compile (_x select 1)) select 0;
+		_dir =  (call compile (_x select 1)) select 1;
+		_vector = (call compile (_x select 1)) select 2;
+	} else {
+		_pos = (_x select 1) select 0;
+		_dir =  (_x select 1) select 1;
+		_vector = (_x select 1) select 2;
+	};
 	_classname = _x select 2;
 	_alive = _x select 3;
 	_spawnpos = _x select 4;
