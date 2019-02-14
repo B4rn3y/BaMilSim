@@ -16,6 +16,11 @@ class CfgFunctions
 			class postInit_mission {postInit = 1;};
 			class PBoats {};
 
+			class sirenLights {};
+			class sirenLightsConfig {};
+			class sirenLightsEx {};
+			class sirenLightsLoop {ext = ".fsm";};
+
 		};
 	};
 };
