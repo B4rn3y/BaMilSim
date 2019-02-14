@@ -15,7 +15,8 @@ SET time_zone = "+01:00";
 CREATE DATABASE IF NOT EXISTS `BaMilSim` DEFAULT CHARACTER SET utf8mb4;
 USE `BaMilSim`;
 
-
+ALTER TABLE `persistent_vehicles`
+MODIFY COLUMN column_name datatype;
 -- --------------------------------------------------------
 
 --

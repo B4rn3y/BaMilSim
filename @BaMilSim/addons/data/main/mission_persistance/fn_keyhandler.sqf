@@ -15,8 +15,10 @@ switch (_code) do
 
 if(_code in (actionKeys "User10")) exitWith {
 	//Interaction key (default is Left Windows, can be mapped via Controls -> Custom -> User Action 10)
-	if(isnil "EVH_ID_Vehicles") then {
-		0 call BAMilSim_fnc_showVehicleDBStatus;
+	if(call BaMilSim_adminlevel > 0) then {
+		if(isnil "EVH_ID_Vehicles") then {
+			0 call BAMilSim_fnc_showVehicleDBStatus;
+		};
 	};
 	true;
 };

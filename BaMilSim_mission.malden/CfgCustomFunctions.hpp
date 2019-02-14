@@ -14,6 +14,7 @@ class CfgFunctions
 			class exp_hint {};
 			class take_seat {};
 			class postInit_mission {postInit = 1;};
+			class PBoats {};
 
 		};
 	};

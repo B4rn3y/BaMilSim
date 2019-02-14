@@ -52,6 +52,8 @@ diag_log "BaMilSim :: Vehicles loaded";
 [] call BaMilSim_fnc_init_map;
 publicVariable "BaMilSim_Server_loaded";
 
+0 spawn BaMilSIm_fnc_PBoats;
+
 diag_log "----------------------------------------------------------------------------------------------------";
 diag_log format ["               End of BaMilSim Server Init :: Total Execution Time %1 seconds ",(diag_tickTime) - _timeStamp];
 diag_log "----------------------------------------------------------------------------------------------------";
