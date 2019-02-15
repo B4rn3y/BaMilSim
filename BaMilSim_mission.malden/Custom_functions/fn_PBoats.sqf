@@ -169,8 +169,11 @@
 
 	[_boat1,_boat2,_boat3,_boat4] spawn _monitoring;
 
-
+	BS6 attachto[truck1,[-0.8,-2.6,-0.8]];BS6 setdir (getdir truck1 +90);
+	sleep 5;
+	BS6 attachto[truck1,[-0.8,-2.6,-0.8]];BS6 setdir (getdir truck1 +90);
 };
+
 
 
 

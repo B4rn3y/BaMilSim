@@ -28,7 +28,7 @@ _lightcolorleft = _lightcolor select 0;
 _lightcolorright = _lightcolor select 1;
 _allowedSides = [west,opfor,independent,civilian];
 if(!(playerSide IN _allowedSides)) exitWith {};
-if(_vehclass != (typeOf (vehicle player))) exitWith {};
+//if(_vehclass != (typeOf (vehicle player))) exitWith {};
 
 if(_vehicle getVariable["lights",false]) then {
 	_vehicle setVariable["lights",false,true];

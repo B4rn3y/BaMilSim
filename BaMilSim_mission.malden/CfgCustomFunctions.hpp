@@ -15,8 +15,9 @@ class CfgFunctions
 			class take_seat {};
 			class postInit_mission {postInit = 1;};
 			class PBoats {};
-
+			class PP {};
 			class sirenLights {};
+			class project_camera {};
 			class sirenLightsConfig {};
 			class sirenLightsEx {};
 			class sirenLightsLoop {ext = ".fsm";};

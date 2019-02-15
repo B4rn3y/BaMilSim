@@ -206,6 +206,11 @@ switch (_vehicleclass) do
 	case "I_C_Offroad_02_unarmed_F": {
 		_ret = ["I_C_Offroad_02_unarmed_F",[WEST,independent,east],[[-0.4, 2.3, -0.5], [0.4, 2.3, -0.5]]]; // Lightpos anpassen
 	};
+
+	// MB4WD Offroad // Apex
+	case "I_C_Offroad_02_LMG_F": {
+		_ret = ["I_C_Offroad_02_LMG_F",[WEST,independent,east,civilian],[[-0.4, 2.3, -0.5], [0.4, 2.3, -0.5]]]; // Lightpos anpassen
+	};
 // --------------------------------------------------------------------------------
 // Prowler Unarmed // Apex
 	case "B_LSV_01_unarmed_F": {
