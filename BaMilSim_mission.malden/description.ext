@@ -18,9 +18,24 @@ respawn = "Base";
 
 disabledAI = 1;
 joinUnassigned = 0;
-enableDebugConsole = 2;
+enableDebugConsole[] = {
+	"76561198018512569", //Barney
+	"76561198019801648",
+	"76561198146761280"
+	//
+};
 
+class CfgSounds
+{
+	sounds[] = {};
 
+	class march
+	{
+		name = "march";
+		sound[] = {"Star_Wars.ogg", 1, 1,180};
+		titles[] = {};
+	};
+};
 
 
 #include "BaMilSim_Config.hpp"

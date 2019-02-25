@@ -75,8 +75,8 @@ _vector = [];
 		};
 		diag_log "BaMilSim :: Setting DB Variable";
 		_vehicle setvariable ["DBID",_id,true];
-		_vehicle disableTIEquipment true;
-		_vehicle disableNVGEquipment true;
+		//_vehicle disableTIEquipment true;
+		//_vehicle disableNVGEquipment true;
 		diag_log "BaMilSim :: Pushbacking Vehicle into Array";
 		BaMilSim_vehicles_monitoring pushBackUnique [_vehicle,_id];
 
